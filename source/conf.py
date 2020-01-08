@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Keyboard11 ZNN website'
+project = 'Keyboard11 z.n.n. website'
 copyright = '2020, stan'
 author = 'stan'
 
@@ -40,6 +40,11 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
+
+# we all know the only language at which I'm not completely incompetent is C++
+# so this will probably shorten stuff -- stan
+primary_domain = 'cpp'
+highlight_language = 'cpp'
 
 
 # -- Options for HTML output -------------------------------------------------
