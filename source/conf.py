@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Keyboard11 z.n.n. website'
+project = 'Keyboard11 z n.n. website'
 copyright = '2020, stan'
 author = 'stan'
 
