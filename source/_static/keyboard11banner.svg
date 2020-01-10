@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="146.47504mm"
+   height="46.899731mm"
+   viewBox="0 0 146.47504 46.899731"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="remake_banner.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1127"
+       id="linearGradient2616"
+       gradientUnits="userSpaceOnUse"
+       x1="69.521599"
+       y1="265.58112"
+       x2="96.957268"
+       y2="265.58112" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1127">
+      <stop
+         style="stop-color:#03d1ab;stop-opacity:1"
+         offset="0"
+         id="stop1123" />
+      <stop
+         style="stop-color:#03ab2d;stop-opacity:1"
+         offset="1"
+         id="stop1125" />
+    </linearGradient>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter2988">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood2978" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite2980" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="1"
+         result="blur"
+         id="feGaussianBlur2982" />
+      <feOffset
+         dx="1.5"
+         dy="0.5"
+         result="offset"
+         id="feOffset2984" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite2986" />
+    </filter>
+    <linearGradient
+       gradientTransform="rotate(10,896.05133,135.97461)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient2239"
+       id="linearGradient2241-9-8"
+       x1="180.8486"
+       y1="227.84505"
+       x2="180.8486"
+       y2="261.21515"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2239">
+      <stop
+         style="stop-color:#03d1ab;stop-opacity:1;"
+         offset="0"
+         id="stop2235" />
+      <stop
+         style="stop-color:#0081d9;stop-opacity:1"
+         offset="1"
+         id="stop2237" />
+    </linearGradient>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter2952">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood2942" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite2944" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="1"
+         result="blur"
+         id="feGaussianBlur2946" />
+      <feOffset
+         dx="1.5"
+         dy="0.5"
+         result="offset"
+         id="feOffset2948" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite2950" />
+    </filter>
+    <linearGradient
+       gradientTransform="rotate(10,896.05133,135.97461)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient2239"
+       id="linearGradient2249-2-6"
+       x1="169.25705"
+       y1="261.19849"
+       x2="169.25705"
+       y2="227.8284"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter2964">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood2954" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite2956" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="1"
+         result="blur"
+         id="feGaussianBlur2958" />
+      <feOffset
+         dx="1.5"
+         dy="0.5"
+         result="offset"
+         id="feOffset2960" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite2962" />
+    </filter>
+    <linearGradient
+       gradientTransform="rotate(10,896.05133,135.97461)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient2263"
+       id="linearGradient2257-3-4"
+       x1="45.161659"
+       y1="244.79395"
+       x2="45.161659"
+       y2="278.16394"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient2263"
+       inkscape:collect="always">
+      <stop
+         id="stop2259"
+         offset="0"
+         style="stop-color:#03ab2d;stop-opacity:1" />
+      <stop
+         id="stop2261"
+         offset="1"
+         style="stop-color:#ee4136;stop-opacity:1" />
+    </linearGradient>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter3000">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood2990" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite2992" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="1"
+         result="blur"
+         id="feGaussianBlur2994" />
+      <feOffset
+         dx="1.5"
+         dy="0.5"
+         result="offset"
+         id="feOffset2996" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite2998" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2298"
+       id="linearGradient2604"
+       gradientUnits="userSpaceOnUse"
+       x1="69.83651"
+       y1="252.98837"
+       x2="161.2018"
+       y2="252.98837" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2298">
+      <stop
+         style="stop-color:#0081d9;stop-opacity:1"
+         offset="0"
+         id="stop2294" />
+      <stop
+         style="stop-color:#ee4136;stop-opacity:1"
+         offset="1"
+         id="stop2296" />
+    </linearGradient>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter2976">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood2966" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite2968" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="1"
+         result="blur"
+         id="feGaussianBlur2970" />
+      <feOffset
+         dx="1.5"
+         dy="0.5"
+         result="offset"
+         id="feOffset2972" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite2974" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2298"
+       id="linearGradient1034"
+       gradientUnits="userSpaceOnUse"
+       x1="69.83651"
+       y1="252.98837"
+       x2="161.2018"
+       y2="252.98837" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2298"
+       id="linearGradient1036"
+       gradientUnits="userSpaceOnUse"
+       x1="69.83651"
+       y1="252.98837"
+       x2="161.2018"
+       y2="252.98837" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2298"
+       id="linearGradient1038"
+       gradientUnits="userSpaceOnUse"
+       x1="69.83651"
+       y1="252.98837"
+       x2="161.2018"
+       y2="252.98837" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2298"
+       id="linearGradient1040"
+       gradientUnits="userSpaceOnUse"
+       x1="69.83651"
+       y1="252.98837"
+       x2="161.2018"
+       y2="252.98837" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2298"
+       id="linearGradient1042"
+       gradientUnits="userSpaceOnUse"
+       x1="69.83651"
+       y1="252.98837"
+       x2="161.2018"
+       y2="252.98837" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2298"
+       id="linearGradient1044"
+       gradientUnits="userSpaceOnUse"
+       x1="69.83651"
+       y1="252.98837"
+       x2="161.2018"
+       y2="252.98837" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2298"
+       id="linearGradient1046"
+       gradientUnits="userSpaceOnUse"
+       x1="69.83651"
+       y1="252.98837"
+       x2="161.2018"
+       y2="252.98837" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1127"
+       id="linearGradient1048"
+       gradientUnits="userSpaceOnUse"
+       x1="69.521599"
+       y1="265.58112"
+       x2="96.957268"
+       y2="265.58112" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1127"
+       id="linearGradient1050"
+       gradientUnits="userSpaceOnUse"
+       x1="69.521599"
+       y1="265.58112"
+       x2="96.957268"
+       y2="265.58112" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1127"
+       id="linearGradient1052"
+       gradientUnits="userSpaceOnUse"
+       x1="69.521599"
+       y1="265.58112"
+       x2="96.957268"
+       y2="265.58112" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1127"
+       id="linearGradient1054"
+       gradientUnits="userSpaceOnUse"
+       x1="69.521599"
+       y1="265.58112"
+       x2="96.957268"
+       y2="265.58112" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1127"
+       id="linearGradient1056"
+       gradientUnits="userSpaceOnUse"
+       x1="69.521599"
+       y1="265.58112"
+       x2="96.957268"
+       y2="265.58112" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.1507576"
+     inkscape:cx="144.1765"
+     inkscape:cy="-50.172422"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1031"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-30.456852,-91.682627)">
+    <g
+       transform="matrix(-0.84693466,-0.14933743,0.14933743,-0.84693466,147.3608,309.14472)"
+       id="g1142-5-9"
+       style="fill:#808080;fill-opacity:0.25098039">
+      <path
+         d="m 36.44096,221.63758 h 8.195734 v -2.95769 H 39.534117 V 204.9526 H 36.44096 Z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path921-8-3-2"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 44.500521,221.63758 h 3.409243 l 1.85138,-4.31236 h 5.937954 l 1.783646,4.31236 h 3.409243 l -6.99911,-16.68498 h -2.4384 z m 6.38951,-7.27005 1.783646,-5.05742 1.783644,5.05742 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path923-1-5-6"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 56.274476,204.9526 4.899377,16.68498 h 2.4384 l 2.75449,-11.04053 2.686757,11.04053 h 2.460976 l 4.8768,-16.68498 H 73.230387 L 70.2727,216.60274 67.473053,204.9526 h -2.257777 l -2.8448,11.65014 -2.93511,-11.65014 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path925-7-6-6"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 76.393044,221.63758 h 3.093148 V 204.9526 h -3.093148 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path927-5-2-4"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 79.734178,221.63758 h 3.409233 l 1.851367,-4.31236 h 5.937951 l 1.783649,4.31236 h 3.409241 L 89.126508,204.9526 h -2.4384 z m 6.389481,-7.27005 1.783649,-5.05742 1.783641,5.05742 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path929-3-9-9"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 93.448379,207.91029 h 3.093149 v 13.72729 h 3.093161 v -13.72729 h 3.093151 v -2.95769 h -9.279461 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path931-8-1-5"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 103.24819,215.519 c 0,4.24462 2.34808,6.41209 5.62186,6.41209 3.29636,0 5.64445,-2.14489 5.64445,-6.41209 v -10.5664 h -3.09316 v 10.5664 c 0,2.61902 -0.99342,3.43182 -2.52871,3.43182 -1.58044,0 -2.55129,-0.83537 -2.55129,-3.43182 v -10.5664 h -3.09315 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path933-0-2-0"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 115.06622,221.63758 h 3.09316 v -6.38951 l 4.38009,6.38951 h 3.81564 l -4.51556,-6.16373 c 3.00285,-0.74507 4.35752,-2.57387 4.35752,-5.17032 0,-1.69333 -0.6096,-3.13831 -1.76107,-4.10915 -1.08373,-0.92569 -2.28036,-1.24178 -4.56071,-1.24178 h -4.80907 z m 3.09316,-8.71502 v -5.01227 h 1.37724 c 2.93511,0 3.54471,0.99342 3.54471,2.48356 0,1.76106 -1.016,2.52871 -3.40924,2.52871 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path935-7-7-4"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 126.25668,221.63758 h 3.40924 l 1.85138,-4.31236 h 5.93796 l 1.78364,4.31236 h 3.40925 l -6.99911,-16.68498 h -2.4384 z m 6.38951,-7.27005 1.78365,-5.05742 1.78364,5.05742 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path937-7-0-8"
+         inkscape:connector-curvature="0" />
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path919-4-2-7-3-9-7"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 176.63222,102.3997 -6.09234,-1.07424 -2.54839,14.4526 -7.63513,-16.248231 -7.33746,-1.2938 9.41423,18.900411 -15.20889,13.96272 7.33747,1.29379 12.68487,-12.39027 -2.50136,14.1859 6.09235,1.07424 z" />
+    <g
+       transform="rotate(-170,100.616,115.93939)"
+       id="g1039-9-4-3-1"
+       style="fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <path
+         d="m 141.79889,97.822379 h 4.19946 v 27.725661 h 6.0057 V 92.177939 h -10.20516 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path939-1-2-1-6-6-7"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 153.39044,97.839032 h 4.19946 v 27.725658 h 6.0057 V 92.194592 h -10.20516 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path939-1-7-4-5-0-2"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(-0.84693466,-0.14933743,0.14933743,-0.84693466,150.21193,311.25946)"
+       id="g1147-6-7"
+       style="fill:#808080;fill-opacity:0.25098039">
+      <path
+         d="m 116.7572,201.39031 c 0,2.12231 1.17405,3.20605 2.81095,3.20605 1.64819,0 2.82224,-1.07245 2.82224,-3.20605 v -5.2832 h -1.54659 v 5.2832 c 0,1.30951 -0.49671,1.71591 -1.26436,1.71591 -0.79023,0 -1.27565,-0.41769 -1.27565,-1.71591 v -5.2832 h -1.54659 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.57777786px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path2012-5-2-2"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 123.98919,201.39031 c 0,2.12231 1.17405,3.20605 2.81094,3.20605 1.64819,0 2.82224,-1.07245 2.82224,-3.20605 v -5.2832 h -1.54659 v 5.2832 c 0,1.30951 -0.49671,1.71591 -1.26436,1.71591 -0.79022,0 -1.27565,-0.41769 -1.27565,-1.71591 v -5.2832 h -1.54658 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.57777786px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path2014-5-6-2"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 131.22117,204.4496 h 1.54659 v -6.06213 l 3.48829,6.06213 h 1.72721 v -8.34249 h -1.54659 v 6.07342 l -3.45442,-6.07342 h -1.76108 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.57777786px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#808080;fill-opacity:0.25098039;stroke:none;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path2016-8-1-6"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="rotate(10,896.05133,135.9744)"
+       id="g2292-2-1"
+       style="fill:url(#linearGradient2604);fill-opacity:1;filter:url(#filter2976)">
+      <path
+         d="m 69.986509,261.33087 h 8.963378 v -2.95769 h -5.870223 v -3.88338 h 5.621869 v -2.95769 h -5.621869 v -3.92853 h 5.870223 v -2.95769 h -8.963378 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1034);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path841-7-8-0"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 79.19048,244.64589 5.4864,10.52126 v 6.16372 h 3.093157 v -6.16372 l 5.486402,-10.52126 h -3.341513 l -3.680176,7.67645 -3.702757,-7.67645 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1036);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path843-3-9-6"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 93.578519,261.33087 h 4.447823 c 4.289778,0 6.389508,-1.91911 6.389508,-4.96711 0,-1.98685 -0.72249,-3.2512 -2.8448,-4.13173 1.33209,-0.69992 1.85138,-1.58045 1.85138,-3.13832 0,-1.55786 -0.69991,-2.86737 -1.89653,-3.63502 -0.99342,-0.63218 -2.032001,-0.8128 -4.515558,-0.8128 h -3.431823 z m 3.093157,-2.95769 v -4.2672 h 1.467556 c 2.144888,0 3.160888,0.69991 3.160888,2.19006 0,1.44496 -0.92569,2.07714 -3.093155,2.07714 z m 0,-7.29262 v -3.40925 h 1.264356 c 1.603021,0 2.393248,0.54187 2.393248,1.69334 0,1.19662 -0.790227,1.71591 -2.664181,1.71591 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1038);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path845-2-7-1"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 104.22994,252.99967 c 0,4.80908 3.88338,8.62471 8.78275,8.62471 4.8542,0 8.60211,-3.77049 8.60211,-8.64729 0,-4.76391 -3.81565,-8.62471 -8.57954,-8.62471 -4.9671,0 -8.80532,3.77049 -8.80532,8.64729 z m 3.11573,0 c 0,-3.22862 2.4384,-5.66702 5.64445,-5.66702 3.09313,0 5.50894,2.48355 5.50894,5.6896 0,3.20604 -2.34807,5.62186 -5.50894,5.62186 -3.16089,0 -5.64445,-2.48355 -5.64445,-5.64444 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1040);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path847-70-3-5"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 119.14463,261.33087 h 3.40925 l 1.85138,-4.31236 h 5.93795 l 1.78365,4.31236 h 3.40924 l -6.99911,-16.68498 h -2.4384 z m 6.38952,-7.27004 1.78364,-5.05743 1.78364,5.05743 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1042);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path849-7-6-9"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 135.64721,261.33087 h 3.09316 v -6.38951 l 4.38009,6.38951 h 3.81564 l -4.51555,-6.16372 c 3.00284,-0.74508 4.35751,-2.57388 4.35751,-5.17032 0,-1.69334 -0.6096,-3.13832 -1.76107,-4.10916 -1.08373,-0.92569 -2.28035,-1.24178 -4.56071,-1.24178 h -4.80907 z m 3.09316,-8.71502 v -5.01227 h 1.37724 c 2.93512,0 3.54472,0.99342 3.54472,2.48356 0,1.76106 -1.016,2.52871 -3.40925,2.52871 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1044);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path851-1-1-4"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 147.68575,261.33087 h 3.88338 c 2.52871,0 4.04142,-0.24836 5.39608,-0.92569 2.57387,-1.26434 4.08658,-4.01883 4.08658,-7.38293 0,-3.16089 -1.30951,-5.77991 -3.63502,-7.17974 -1.30951,-0.79022 -3.29636,-1.19662 -5.91538,-1.19662 h -3.81564 z m 3.09315,-2.95769 v -10.7696 h 0.6096 c 1.96427,0 3.02543,0.18062 3.99627,0.67733 1.58044,0.8128 2.55129,2.59645 2.55129,4.74134 0,2.00942 -0.92569,3.79306 -2.41582,4.60586 -0.92569,0.51929 -2.21263,0.74507 -4.064,0.74507 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1046);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path853-3-2-9"
+         inkscape:connector-curvature="0" />
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path919-4-2-3-9-0"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2257-3-4);fill-opacity:1;stroke:#ffffff;stroke-width:0.52916664;stroke-opacity:0.50196078;filter:url(#filter3000)"
+       d="m 33.39765,128.24835 6.09233,1.07424 2.54839,-14.45261 7.635132,16.24824 7.33748,1.2938 -9.41425,-18.90041 15.2089,-13.962641 -7.33749,-1.2938 -12.684862,12.390201 2.501352,-14.185821 -6.092342,-1.07425 z" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path939-1-2-6-3-9"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2249-2-6);fill-opacity:1;stroke:#ffffff;stroke-width:0.52916664;stroke-opacity:0.50196078;filter:url(#filter2964)"
+       d="m 153.31817,104.01303 4.13565,0.72922 -4.81451,27.30445 5.91446,1.04288 5.79466,-32.86313 -10.05011,-1.772111 z" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path939-1-7-3-1-1"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2241-9-8);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078;filter:url(#filter2952)"
+       d="m 164.73072,106.04227 4.13567,0.72924 -4.81451,27.30444 5.91445,1.04288 5.79465,-32.86314 -10.05012,-1.7721 z" />
+    <g
+       transform="rotate(10,896.05133,135.9744)"
+       id="g1121-9-7"
+       style="fill:url(#linearGradient2616);fill-opacity:1;filter:url(#filter2988)">
+      <path
+         d="m 69.671601,268.78151 h 4.763909 v -1.34338 h -2.968976 l 2.754489,-3.56729 v -1.34337 h -4.233334 v 1.34337 h 2.438401 l -2.754489,3.56729 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1048);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path1263-9-4-7"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 78.411848,268.78151 h 1.501421 v -2.9464 c 0,-0.83538 0.05645,-1.19662 0.248356,-1.50142 0.237067,-0.37254 0.63218,-0.57574 1.106313,-0.57574 0.745067,0 1.196621,0.29352 1.196621,1.96427 v 3.05929 h 1.50142 v -3.3528 c 0,-1.1176 -0.112887,-1.65947 -0.451554,-2.14489 -0.4064,-0.58702 -1.083733,-0.90311 -1.952977,-0.90311 -0.7112,0 -1.20791,0.21449 -1.761069,0.74507 v -0.59831 h -1.388531 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1050);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path1265-6-7-1"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 85.383971,268.78151 h 1.501423 v -1.44498 h -1.501423 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1052);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path1267-9-8-1"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 88.333723,268.78151 h 1.501421 v -2.9464 c 0,-0.83538 0.05644,-1.19662 0.248356,-1.50142 0.237067,-0.37254 0.63218,-0.57574 1.106313,-0.57574 0.745067,0 1.196621,0.29352 1.196621,1.96427 v 3.05929 h 1.501423 v -3.3528 c 0,-1.1176 -0.11289,-1.65947 -0.451557,-2.14489 -0.4064,-0.58702 -1.083733,-0.90311 -1.952977,-0.90311 -0.7112,0 -1.20791,0.21449 -1.761066,0.74507 v -0.59831 h -1.388534 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1054);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path1269-5-4-5"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 95.305846,268.78151 h 1.501423 v -1.44498 h -1.501423 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:1.25;font-family:'TeX Gyre Adventor';-inkscape-font-specification:'TeX Gyre Adventor, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient1056);fill-opacity:1;stroke:#ffffff;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.50196078"
+         id="path1271-9-5-9"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>
