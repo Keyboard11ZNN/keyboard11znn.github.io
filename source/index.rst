@@ -6,12 +6,11 @@
 Welcome to Keyboard11 ZNN website!
 ==================================================
 
-.. centered:: A WORK-IN-PROGRESS DOCUMENTATION OF A SICK PROGRAMMER'S MIND
+**A WORK-IN-PROGRESS DOCUMENTATION OF A SICK PROGRAMMER'S MIND**
 
-There, I just justified using a documentation tool to write what is
-effectively a dumb blog. Jokers beware, joke might be on you.
-
-Zigh.
+(This tagline is there exclusively to stop you from complaining
+about usage of a documentation writing tool to write, effectively,
+something more reminiscent of a blog.)
 
 .. toctree::
    :maxdepth: 1
