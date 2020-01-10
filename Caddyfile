@@ -1,4 +1,9 @@
-localhost:2015
-gzip
-root build/dirhtml
+localhost:2015 {
+ gzip
+ root build/dirhtml
+}
+
+# this is not compatible with Caddy 2, only Caddy 1.
+# I really dislike doing such stuff, but come on, that's a pretty simple setup.
+# And no, removing the gzip directive doesn't fix all problems.
 
