@@ -1,0 +1,4 @@
+localhost:2015
+gzip
+root build/dirhtml
+
