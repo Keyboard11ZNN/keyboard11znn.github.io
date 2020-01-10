@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Keyboard11 z n.n. website'
+project = 'Keyboard11 z n. n. website'
 copyright = '2020, stan'
 author = 'stan'
 
@@ -53,6 +53,15 @@ highlight_language = 'cpp'
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
+html_theme_options = {
+    'logo_only': True,
+    'display_version': False,
+    'prev_next_buttons_location': 'both',
+    'titles_only': True,
+    'style_external_links': True,
+    'style_nav_header_background': '#1940b9',
+    'sticky_navigation': False,
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -62,3 +71,9 @@ html_static_path = ['_static']
 # here's my super turbo fancy minimal logo which totally didn't take forever
 # to make - stan
 html_logo = '_static/keyboard11banner.svg'
+# the default title is kind of redundant though
+html_title = 'KEYBOARD11 z n. n.'
+# this is kinda unlikely, but still
+htmlhelp_basename = 'kbrd11'
+
+
