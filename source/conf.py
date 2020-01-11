@@ -71,6 +71,7 @@ html_static_path = ['_static']
 # here's my super turbo fancy minimal logo which totally didn't take forever
 # to make - stan
 html_logo = '_static/keyboard11banner.svg'
+html_favicon = '_static/favicon.ico'
 # the default title is kind of redundant though
 html_title = 'KEYBOARD11 z n. n.'
 # this is kinda unlikely, but still
