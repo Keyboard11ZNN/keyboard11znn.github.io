@@ -18,7 +18,7 @@ something more reminiscent of a blog.)
 
    welcome
    disclaimer
-
+   ideabox
 
 Indices and tables
 ==================
