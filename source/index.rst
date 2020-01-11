@@ -1,9 +1,9 @@
-.. Keyboard11 ZNN website documentation master file, created by
+.. Keyboard11 z n. n. website documentation master file, created by
    sphinx-quickstart on Wed Jan  8 14:49:57 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Keyboard11 ZNN website!
+Welcome to Keyboard11 z n. n. website!
 ==================================================
 
 **A WORK-IN-PROGRESS DOCUMENTATION OF A SICK PROGRAMMER'S MIND**
@@ -22,6 +22,9 @@ something more reminiscent of a blog.)
 
 Indices and tables
 ==================
+
+.. TODO: it's possible that modindex is useless for non-Python code
+   and needs to be removed.
 
 * :ref:`genindex`
 * :ref:`modindex`

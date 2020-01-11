@@ -2,8 +2,8 @@
 A disclaimer of sorts
 =====================
 
-The author of Keyboard11 ZNN website and any other legal representation thereof is,
-to the furthest degree allowed by applicable laws,
+The author(s) of Keyboard11 z n. n. website and any other legal representation
+thereof is, to the furthest degree allowed by applicable laws,
 in no way legally responsible for your actions that may result from:
 
 #. applying a piece of advice or thought that was suggested or proven to be correct on this website;
@@ -19,4 +19,7 @@ in no way legally responsible for your actions that may result from:
 #. arguing for or against the legality of this website;
 #. absorbing inappropriate amounts of hydroxymethane;
 #. any combination of the above.
+
+Keyboard11 z n. n. website does not collect your personal data without further
+prompts.
 
