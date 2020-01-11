@@ -23,9 +23,9 @@ something more reminiscent of a blog.)
 Indices and tables
 ==================
 
-.. TODO: it's possible that modindex is useless for non-Python code
-   and needs to be removed.
+.. "modindex" seems to be only for Python, so we're turning it off for now.
+   * :ref:`modindex`
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
+
