@@ -8,12 +8,11 @@ the incredible `David Morgan-Mar`_. The Ideabox features
 a selection of undercooked ideas which may or may not be good.
 Feel free to discuss them, implement them, or tell me they suck.
 
-
-
 .. _mezzacotta: https://www.mezzacotta.net
 .. _`David Morgan-Mar`: https://www.dangermouse.net
 
 .. toctree::
+   :titlesonly:
    :caption: What's in the Ideabox as of today?
    :reversed:
    :glob:
