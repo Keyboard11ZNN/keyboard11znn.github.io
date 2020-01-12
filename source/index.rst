@@ -18,6 +18,7 @@ something more reminiscent of a blog.)
 
    welcome
    disclaimer
+   whinecellar
    ideabox
 
 Indices and tables
