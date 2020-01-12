@@ -192,5 +192,6 @@ Futomake is obviously a pun on Make programs and sushi.
 
 If it's not clear from being in The Ideabox, I did not code an implementation
 of Futomake (yet?). I find the concept easy to understand, but I don't deny
-C++ compilers are complicated as is.
+C++ compilers are complicated as is. A function definition can instantiate
+templates and all.
 
