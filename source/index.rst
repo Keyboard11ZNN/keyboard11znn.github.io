@@ -3,10 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+======================================
 Welcome to Keyboard11 z n. n. website!
-==================================================
+======================================
 
-**A WORK-IN-PROGRESS DOCUMENTATION OF A SICK PROGRAMMER'S MIND**
+::
+
+   "A WORK-IN-PROGRESS DOCUMENTATION OF A SICK PROGRAMMER'S MIND"
 
 (This tagline is there exclusively to stop you from complaining
 about usage of a documentation writing tool to write, effectively,
@@ -21,8 +24,7 @@ something more reminiscent of a blog.)
    whinecellar
    ideabox
 
-Indices and tables
-==================
+Other stuff:
 
 .. "modindex" seems to be only for Python, so we're turning it off for now.
    * :ref:`modindex`
