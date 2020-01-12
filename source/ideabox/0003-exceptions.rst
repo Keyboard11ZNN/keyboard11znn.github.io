@@ -60,6 +60,12 @@ understanding, but is way dumber in the setup.
    addresses coupled with differential pointers to corresponding exception
    path blocks.
 
+(This works with regular pointers instead of differential pointers too.
+I'm suggesting the use of differential pointers because they could be placed
+in position-independent code, which is advantageous in Linux shared libraries,
+for instance. If you have trouble with understanding the
+core concept, feel free to sub in regular pointers.)
+
 When an exception is thrown, instead of returning directly from function,
 we scan the executable code itself and switch the return pointer so that
 it goes to the exception path (while the marker convention would contain
