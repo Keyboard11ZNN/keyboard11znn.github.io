@@ -49,18 +49,10 @@ highlight_language = 'cpp'
 
 # -- Options for HTML output -------------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'classic'
 html_theme_options = {
-    'logo_only': True,
-    'display_version': False,
-    'prev_next_buttons_location': 'both',
-    'titles_only': True,
-    'style_external_links': True,
-    'style_nav_header_background': '#1940b9',
-    'sticky_navigation': False,
+    'collapsiblesidebar': True,
+    'externalrefs': True,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
