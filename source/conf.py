@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Keyboard11 z n. n. website'
-copyright = '2020, stan'
-author = 'stan'
+copyright = '2020+, stan423321'
+author = 'stan423321'
 
 # The full version, including alpha/beta/rc tags
 release = 'tbd'
