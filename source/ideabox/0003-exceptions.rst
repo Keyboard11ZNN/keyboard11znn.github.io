@@ -33,6 +33,12 @@ should, theoretically, allow the non-throwing performance of code to reach
 the equivalent of little-to-no error checking. However, this doesn't seem to
 work very well.
 
+The explanation documents for DWARF-2 Unwinding Tables include a very
+peculiar example, where an exception is thrown through a function that
+doesn't do anything with it. Given that RAII is a thing now, it looks
+like it was not taken into account during DWARF-2 and SEH dessign, resulting
+in, effectively, rethrows when a destructor is encountered.
+
 Enter Stan's Dumb Idea
 ----------------------
 
@@ -42,7 +48,7 @@ in the execution state.
 This is superficially similar to Unwinding Tables, to the best of my
 understanding, but is way dumber in the setup.
 
-#. Find a sequence of data which will never appear in compiled code.
+#. Find a sequence of bytes which will never appear in compiled code.
    Something involving defined illegal opcodes is ideal.
 #. Compile the code mostly as if a marker convention was in place.
    Separate the blocks used exclusively in exception-thrown path
