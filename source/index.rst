@@ -27,6 +27,7 @@ something more reminiscent of a blog.)
 
    welcome
    disclaimer
+   garden
    whinecellar
    ideabox
 
