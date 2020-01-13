@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stan whines about Git &#8212; KEYBOARD11 z n. n.</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Stan whines about GUI vs. CLI" href="../0001-guivscli/" />
+    <link rel="prev" title="Whine Cellar" href="../" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex/" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../0001-guivscli/" title="Stan whines about GUI vs. CLI"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../" title="Whine Cellar"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../">KEYBOARD11 z n. n.</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../" accesskey="U">Whine Cellar</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="stan-whines-about-git">
+<h1>Stan whines about Git<a class="headerlink" href="#stan-whines-about-git" title="Permalink to this headline">¶</a></h1>
+<p>Git is the most commonly used distributed, non-linear version control system.
+It has taken off for a reason, namely its competition doing a lot of things
+wrong. This does not mean, however, that Git couldn’t be better.</p>
+<div class="section" id="reliance-on-linux-optimizations-as-a-part-of-overall-design">
+<h2>Reliance on Linux optimizations as a part of overall design<a class="headerlink" href="#reliance-on-linux-optimizations-as-a-part-of-overall-design" title="Permalink to this headline">¶</a></h2>
+<p>This is most apparent on Windows, but it affects Linux, BSD and other
+versions too. Git <em>works</em> on Windows, mind you, but it’s way slower than
+it could be, because of its Linux heritage. What does that manifest in,
+you ask?</p>
+<ul class="simple">
+<li><p>Git uses filesystem as a general database. This is exceptionally slow
+on Windows, because Windows assumes the filesystem is used for storing,
+well, files of the user, not individual tiny information chunks.</p></li>
+<li><p>Git is composed of many separate tools that call each other.
+It is likely that Git redesigned to work in a Busybox way would be faster
+everywhere.</p></li>
+<li><p>Git doesn’t deal well with anything but line based source code.
+Wait, they’re popular on Linux, but that doesn’t have much to do with
+optimizations, does it?</p></li>
+</ul>
+</div>
+<div class="section" id="reliance-on-line-based-source-code">
+<h2>Reliance on line-based source code<a class="headerlink" href="#reliance-on-line-based-source-code" title="Permalink to this headline">¶</a></h2>
+<p>It is understandable that the initial design for Git focused on line-based
+source code; coming up with something handling arbitrary binary formats
+would be basically impossible, given how crazy something like ZStandard is.
+That said, if Git has any plugins for improving support for binary formats,
+for instance ones with simple structure directly corresponding to a text file,
+like, for instance, binary JSON, I’m not aware of it, and given the popularity
+of Git itself I think it’s fair to assume such a thing is not popular.</p>
+<p>This is way worse than it initially appears because it leads to a feedback
+loop. People won’t even consider making binary source code of stuff
+if they’re using Git. In turn, Git won’t improve support for these once again.</p>
+</div>
+<div class="section" id="rebasing-and-cherry-picking">
+<h2>Rebasing and cherry picking<a class="headerlink" href="#rebasing-and-cherry-picking" title="Permalink to this headline">¶</a></h2>
+<p>This is something that some people apparently love, but to me it partially
+defats the purpose of VCS. Merging stuff in should be enough for constructing
+things. If you want to skip the development history, skip it wholesale. These
+fake versions inbetween are fake.</p>
+<p>The counterpoint is that one doesn’t need to deal with rebasing in their repo.
+Except, one doesn’t need to deal with Git either under that logic. Unless
+you control the repo completely, you can’t deal with others deciding to rebase.</p>
+</div>
+<div class="section" id="final-note">
+<h2>Final note<a class="headerlink" href="#final-note" title="Permalink to this headline">¶</a></h2>
+<p>I wonder if using Git more despite my perceived issues with it above would
+lead me to finding them non-issues, or finding <em>more</em> issues.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../">
+              <img class="logo" src="../../_static/keyboard11banner.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Stan whines about Git</a><ul>
+<li><a class="reference internal" href="#reliance-on-linux-optimizations-as-a-part-of-overall-design">Reliance on Linux optimizations as a part of overall design</a></li>
+<li><a class="reference internal" href="#reliance-on-line-based-source-code">Reliance on line-based source code</a></li>
+<li><a class="reference internal" href="#rebasing-and-cherry-picking">Rebasing and cherry picking</a></li>
+<li><a class="reference internal" href="#final-note">Final note</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../"
+                        title="previous chapter">Whine Cellar</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../0001-guivscli/"
+                        title="next chapter">Stan whines about GUI vs. CLI</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex/" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../0001-guivscli/" title="Stan whines about GUI vs. CLI"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../" title="Whine Cellar"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../">KEYBOARD11 z n. n.</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../" >Whine Cellar</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020+, stan423321.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
+    </div>
+  </body>
+</html>

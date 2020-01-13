@@ -1,0 +1,61 @@
+=====================
+Stan whines about Git
+=====================
+
+.. contents
+
+Git is the most commonly used distributed, non-linear version control system.
+It has taken off for a reason, namely its competition doing a lot of things
+wrong. This does not mean, however, that Git couldn't be better.
+
+Reliance on Linux optimizations as a part of overall design
+-----------------------------------------------------------
+
+This is most apparent on Windows, but it affects Linux, BSD and other
+versions too. Git *works* on Windows, mind you, but it's way slower than
+it could be, because of its Linux heritage. What does that manifest in,
+you ask?
+
+- Git uses filesystem as a general database. This is exceptionally slow
+  on Windows, because Windows assumes the filesystem is used for storing,
+  well, files of the user, not individual tiny information chunks.
+- Git is composed of many separate tools that call each other.
+  It is likely that Git redesigned to work in a Busybox way would be faster
+  everywhere.
+- Git doesn't deal well with anything but line based source code.
+  Wait, they're popular on Linux, but that doesn't have much to do with
+  optimizations, does it?
+
+Reliance on line-based source code
+----------------------------------
+
+It is understandable that the initial design for Git focused on line-based
+source code; coming up with something handling arbitrary binary formats
+would be basically impossible, given how crazy something like ZStandard is.
+That said, if Git has any plugins for improving support for binary formats,
+for instance ones with simple structure directly corresponding to a text file,
+like, for instance, binary JSON, I'm not aware of it, and given the popularity
+of Git itself I think it's fair to assume such a thing is not popular.
+
+This is way worse than it initially appears because it leads to a feedback
+loop. People won't even consider making binary source code of stuff
+if they're using Git. In turn, Git won't improve support for these once again.
+
+Rebasing and cherry picking
+---------------------------
+
+This is something that some people apparently love, but to me it partially
+defats the purpose of VCS. Merging stuff in should be enough for constructing
+things. If you want to skip the development history, skip it wholesale. These
+fake versions inbetween are fake.
+
+The counterpoint is that one doesn't need to deal with rebasing in their repo.
+Except, one doesn't need to deal with Git either under that logic. Unless
+you control the repo completely, you can't deal with others deciding to rebase.
+
+Final note
+----------
+
+I wonder if using Git more despite my perceived issues with it above would
+lead me to finding them non-issues, or finding *more* issues.
+

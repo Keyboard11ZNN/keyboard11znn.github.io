@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>How to accelerate C++ compilation without killing preprocessing &#8212; KEYBOARD11 z n. n.</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="The inadequacy of linear terminal for age of concurrency" href="../0002-paraconsole/" />
+    <link rel="prev" title="Quick and dirty indented language lossless alpha-conversion" href="../0000-qadillac/" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex/" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../0002-paraconsole/" title="The inadequacy of linear terminal for age of concurrency"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../0000-qadillac/" title="Quick and dirty indented language lossless alpha-conversion"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../">KEYBOARD11 z n. n.</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../" accesskey="U">Keyboard11 Ideabox</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="how-to-accelerate-c-compilation-without-killing-preprocessing">
+<h1>How to accelerate C++ compilation without killing preprocessing<a class="headerlink" href="#how-to-accelerate-c-compilation-without-killing-preprocessing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>The C++ language is notorious for its long compilation times.
+There are two issues at hand that seem to be the primary culprits
+in the eyes of internet. Firstly, C++ uses header files, a technology
+inherited from C, which amongst its many drawbacks requires the files
+to be processed from scratch in every module; secondly, it uses
+templates, which need to be instantiated for every type instantiation
+in every module.</p>
+</div>
+<div class="section" id="currently-deployed-countermeasures">
+<h2>Currently deployed countermeasures<a class="headerlink" href="#currently-deployed-countermeasures" title="Permalink to this headline">¶</a></h2>
+<p>The template issue can now be handled in some cases by specifically
+mentioning certain templates being explicitly constructed elsewhere,
+and then explicitly constructing these templates elsewhere. This requires
+further programming prowess compared to just using the templates,
+but is a relatively clean solution.</p>
+<p>The overall speed of compilation issue is handled by the following
+things, which aren’t satisfactory in my humble opinion:</p>
+<ul class="simple">
+<li><p>throwing raw power at the problem with a compilation server farm.
+(Google is known to do this.)</p></li>
+<li><p>combining separate C++ object files into larger object files.
+This is a huge hack that happens to work sometimes, but explicitly
+prevents certain C++ functionality from being used. It also requires
+smart grouping of concatenated modules to acquire any speed gains;
+the only time saved is on the parts they all use.</p></li>
+<li><p>using a common header as a starting state for compilation of all objects.
+This is, actually, less of a hack than the previous take, or at least
+it can be in certain implementations, however its utility is limited.
+The precompiled header, as it is often called, should only cover stable
+elements of the codebase such as unmodified dependences of the project
+and some very well regarded base code, or else it will cause spontaneous
+recompilations of everything.</p></li>
+</ul>
+<p>The ISO C++ committee has decided to come up with a module system,
+a C++ take on a modern declaration importing. This is likely to result
+in some speed-up regarding repeated parsing of header files, but unlikely
+to help with template instantiation compared to status quo.</p>
+</div>
+<div class="section" id="existing-work-and-the-anti-axiom">
+<h2>Existing work and the anti-axiom<a class="headerlink" href="#existing-work-and-the-anti-axiom" title="Permalink to this headline">¶</a></h2>
+<p>C++ compilation can be sped up in a quite different fashion, if one is ready
+to abandon certain assumptions about how C++ build systems work.</p>
+<p>If you’re using something like GNU Make or Ninja to build a C++ program,
+the process is lead exclusively by the timestamps of the involved files.
+This is inefficient; imagine if you rename some variables; there’s no
+need to redo the register allocation in the program, is there. Some existing
+build systems took notice and started using filename hashes instead, which
+is a good move. Further improvements can be acquired by splitting off
+the preprocessing step; renaming internal variables without saving debug
+info will still rebuild an object file, but adding a comment will stop that
+half-way through.</p>
+<p>Today, I present to you the concept of Futomake. Futomake takes the idea
+of reusing previous work and takes it up to eleven. However, this requires
+further cooperation of the compiler and the build system than typically seen
+today. In result, you get equivalent of precompiled headers just working
+automatically, and further boost to unity builds, server farms, and modules.
+I think.</p>
+</div>
+<div class="section" id="futomake-core-concepts">
+<h2>Futomake core concepts<a class="headerlink" href="#futomake-core-concepts" title="Permalink to this headline">¶</a></h2>
+<p>Futomake is based on the idea that the compiler can turn back at the build
+system and tell it that actually, it didn’t do its full job, but the build
+system can finish it by invoking it again in certain ways, possibly more
+than one time. This could be actually implemented by compiler taking over the
+building wholesale, or by standardizing a way for the hypothetical Futomake
+to talk with hypothetical C++ compiler. The other important part is that
+Futomake uses hashes to recognize the work that is already done. In fact,
+some extra savings are possible by using hashes in places of things other
+than timestamps.</p>
+<p>The resultant setup is completely compatible with the current source code
+relying on preprocessor; this includes, for lack of a better term,
+preprocessor “hacks”.</p>
+<p>A part of the speedup is something we could call “context” and “relevant
+context”, which is where a technique similar to dependency information
+generation comes into play. Namely, the first run of compiler over a chunk
+of code can tell us what external entities are relevant to it.</p>
+<p>This can involve basically everything; templates, functions, and preprocessor.
+I’m going to show you a preprocessor example since a lot of people think
+it must be slow, and it’s arguably the simplest thing here nonetheless.</p>
+</div>
+<div class="section" id="a-preprocessor-example">
+<h2>A preprocessor example<a class="headerlink" href="#a-preprocessor-example" title="Permalink to this headline">¶</a></h2>
+<p>Consider we have two files, a common header and the object file.</p>
+<p>The object file, “main.cpp”, looks like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;header.hpp&quot;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The header file, “header.hpp”, looks like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;library1.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;library2.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>At this point, things get a little bit more interesting. “library1.hpp” is:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef L1</span>
+<span class="cp">#define L1</span>
+<span class="kt">int</span> <span class="nf">l1</span><span class="p">();</span>
+<span class="cp">#endif </span><span class="c1">//L1</span>
+</pre></div>
+</div>
+<p>The “library2.hpp”, on the other hand, features some preprocessor driven
+functionality:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef L2</span>
+<span class="cp">#define L2</span>
+<span class="cp">#ifdef L2_INCLUDE64</span>
+<span class="kt">long</span> <span class="kt">long</span> <span class="nf">l2_64</span><span class="p">();</span>
+<span class="cp">#endif </span><span class="c1">//defined L2_INCLUDE64</span>
+<span class="kt">int</span> <span class="nf">l2</span><span class="p">();</span>
+<span class="cp">#endif </span><span class="c1">//L2</span>
+</pre></div>
+</div>
+<p>So Futomake tells preprocessor something along the lines of:</p>
+<blockquote>
+<div><p>Hey, preprocessor, preprocess me that “main.cpp”</p>
+</div></blockquote>
+<p>Then preprocessor replies:</p>
+<blockquote>
+<div><p>No can do, but I’ll tell you how to.
+Get an initial context of “__FILE__ is main.cpp, __LINE__ is 1…”
+and tell me to preprocess “main.cpp” with that.</p>
+</div></blockquote>
+<p>So Futomake does just that, and the reply is:</p>
+<blockquote>
+<div><p>No can do, but I’ll tell you how to.
+First, I preprocessed an empty beginning of the file for you.
+Turns out I did not need __FILE__, __LINE__ or __GNUC__.
+The result is that empty file here.
+The next thing you must do is to preprocess “header.hpp” with context “…”,
+then preprocess “main.cpp” from line 2 with context “header.hpp end but…”,
+then concatenate these three parts.</p>
+</div></blockquote>
+<p>This keeps happening inside “header.hpp”. The important change is that
+preprocessor lists out the tokens it stumbled upon, so that Futomake
+knows to rerun it if they change. Which is not really present here since we
+start with an include as we often do.</p>
+<p>Now, let’s consider how stuff… changes if we change stuff in “main.cpp”.</p>
+<p>If you make the main function do something else, no defines change.
+So Futomake, upon a rerun, can skip the repreprocessing of the header.
+If it’s really smart it can even skip directly to the main function itself,
+and if there’s something below main maybe it can reuse old preprocessing
+for that as well.</p>
+<p>If you add a “#define L2_INCLUDE64” at the top, “header.hpp” and “library2.hpp”
+will need (maybe partial) reprocessing. That’s kind of intended.
+But “library1.hpp” won’t, since it doesn’t include that token, so its inclusion
+has the same relevant context; so Futomake will pick the result of the old run.</p>
+<p>If Futomake’s cache is shared between object files, we just got prepreprocessed
+files for free.</p>
+</div>
+<div class="section" id="regarding-not-preprocessing">
+<h2>Regarding not-preprocessing<a class="headerlink" href="#regarding-not-preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>The post-preprocessing parser could stop at least at the end of every function.
+If it could stop more often, that’s great. Combined with extraction of relevant
+contexts, this could really speed stuff up.</p>
+<p>Global optimization wouldn’t gain much from this, but it’s often done on the
+whole program anyway. Sometimes it could be avoided altogether, especially
+if the “concatenation” seen in preprocessor example was replaced with a more
+shuffle-friendly process.</p>
+</div>
+<div class="section" id="final-note">
+<h2>Final note<a class="headerlink" href="#final-note" title="Permalink to this headline">¶</a></h2>
+<p>Futomake is obviously a pun on Make programs and sushi.</p>
+<p>If it’s not clear from being in The Ideabox, I did not code an implementation
+of Futomake (yet?). I find the concept easy to understand, but I don’t deny
+C++ compilers are complicated as is. A function definition can instantiate
+templates and all.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../">
+              <img class="logo" src="../../_static/keyboard11banner.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to accelerate C++ compilation without killing preprocessing</a><ul>
+<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#currently-deployed-countermeasures">Currently deployed countermeasures</a></li>
+<li><a class="reference internal" href="#existing-work-and-the-anti-axiom">Existing work and the anti-axiom</a></li>
+<li><a class="reference internal" href="#futomake-core-concepts">Futomake core concepts</a></li>
+<li><a class="reference internal" href="#a-preprocessor-example">A preprocessor example</a></li>
+<li><a class="reference internal" href="#regarding-not-preprocessing">Regarding not-preprocessing</a></li>
+<li><a class="reference internal" href="#final-note">Final note</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../0000-qadillac/"
+                        title="previous chapter">Quick and dirty indented language lossless alpha-conversion</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../0002-paraconsole/"
+                        title="next chapter">The inadequacy of linear terminal for age of concurrency</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex/" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../0002-paraconsole/" title="The inadequacy of linear terminal for age of concurrency"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../0000-qadillac/" title="Quick and dirty indented language lossless alpha-conversion"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../">KEYBOARD11 z n. n.</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../" >Keyboard11 Ideabox</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020+, stan423321.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
+    </div>
+  </body>
+</html>

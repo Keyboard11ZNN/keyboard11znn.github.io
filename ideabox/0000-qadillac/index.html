@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Quick and dirty indented language lossless alpha-conversion &#8212; KEYBOARD11 z n. n.</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="How to accelerate C++ compilation without killing preprocessing" href="../0001-futomake/" />
+    <link rel="prev" title="Keyboard11 Ideabox" href="../" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex/" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../0001-futomake/" title="How to accelerate C++ compilation without killing preprocessing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../" title="Keyboard11 Ideabox"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../">KEYBOARD11 z n. n.</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../" accesskey="U">Keyboard11 Ideabox</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="quick-and-dirty-indented-language-lossless-alpha-conversion">
+<h1>Quick and dirty indented language lossless alpha-conversion<a class="headerlink" href="#quick-and-dirty-indented-language-lossless-alpha-conversion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>The source specification of computer programs and other things
+is, for historical reasons, typically composed of text files.
+However, in accordance with modern understanding of code being tidy,
+those text files tend to follow multiple rigid structures, which
+lowers their information density when compared to storage length. One such
+structure is indentation.</p>
+<p>Indentation is very useful for viewer of the code, but it comes with
+a lot of drawbacks when one considers its direct storage in text files.
+The most basic one is that, naturally, it wastes space. This can be partially
+mitagated with compression algorithms, but if it wasn’t the case those
+could do a better job on the rest of the code.</p>
+</div>
+<div class="section" id="idea">
+<h2>Idea<a class="headerlink" href="#idea" title="Permalink to this headline">¶</a></h2>
+<p>A very simple encoding could be made which would allow lossless compression
+of a typical source code file, that would at the same time preserve most
+of its non-indentation properties so that dictionary algorithms could
+keep doing their jobs. Additionally, this could improve performance of some
+diff utilities.</p>
+<p>Amongst 128 standard US-ASCII characters, the first 32 are control codes.
+Out of these 32, maybe 5 are commonly seen within source code. The rest
+could be used to implement the indentation encoding, with one reserved
+to preserve their actual occurences if they happened to happen. In fact, this
+is such a huge collection of control codes that the indentation encoding
+would barely take half of them, and the occasionally used high bytes are
+completely absent from our discussion so far; further encoding improvements
+are certainly possible; this is an undercooked idea though, so we’re going
+to focus on indentation encoding.</p>
+<p>The indentation in most languages tends to follow a stack-like structure.
+A stack of indentation strings seems like a natural pick. It could be
+pushed at a start of indentation block, and popped at the end of one.</p>
+<p>Most programs tend to follow a simple scheme of indentation levels,
+each denoted with a tab character or a constant length space string.
+However, there are some exceptions in various styles, and some
+ocassional oddities which could use a more varied string, like
+blocks of C++ one-line comments. Encoding most used schemes with a single
+control code while allowing encoding new ones seems like a fine decision.</p>
+<p>There doesn’t seem to be a logical reason to allow manipulating
+the indentation stack in the middle of a line.</p>
+<p>C, C++ and similar languages could achieve further compression by combining
+pushing and popping from indentation stack with embedded parentheses, braces,
+and maybe brackets.</p>
+<p>Python and similar languages could achieve further compression by combining
+popping several layers from the stack in a lesser count of control codes.</p>
+</div>
+<div class="section" id="problems">
+<h2>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
+<p>While this could be easily implemented as a compression layer in 7-zip style
+archive, implementation in version control systems is likely to be hard
+due to their embedded difference utilities not expecting the control codes,
+especially used in the way presented here.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../">
+              <img class="logo" src="../../_static/keyboard11banner.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Quick and dirty indented language lossless alpha-conversion</a><ul>
+<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#idea">Idea</a></li>
+<li><a class="reference internal" href="#problems">Problems</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../"
+                        title="previous chapter">Keyboard11 Ideabox</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../0001-futomake/"
+                        title="next chapter">How to accelerate C++ compilation without killing preprocessing</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex/" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../0001-futomake/" title="How to accelerate C++ compilation without killing preprocessing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../" title="Keyboard11 Ideabox"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../">KEYBOARD11 z n. n.</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../" >Keyboard11 Ideabox</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020+, stan423321.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
+    </div>
+  </body>
+</html>
