@@ -2,8 +2,14 @@
 Whine Cellar
 ============
 
-Whining about things on the Internet! Who would have thought
-that would be possible?
+Since multiple millenia, the masters of whinemaking are preserving
+the sweat juices of complaints, trying to conjure the saltiest whine
+possible. Could it lie in this very cellar, among some typewriters
+and cogs? Maybe behind one of the dusted cobwebs, or on the broken
+wheel?
+
+Given the prices and everything being on offer, this seems unlikely.
+But hey, you know what they say about the cheap whine.
 
 .. toctree::
    :titlesonly:
@@ -13,5 +19,4 @@ that would be possible?
 
    whinecellar/*
 
-Well... at least that's healthier than alcoholism.
-
+Well... at least all that whining is healthier than hydroxymethane.
