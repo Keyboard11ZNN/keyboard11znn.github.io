@@ -11,6 +11,12 @@ wheel?
 Given the prices and everything being on offer, this seems unlikely.
 But hey, you know what they say about the cheap whine.
 
+.. rubric:: Recently modified
+
+.. k11specialrecentlymodified:: 3
+
+   whinecellar/*
+
 .. toctree::
    :titlesonly:
    :caption: What's in the Whine Cellar as of today?

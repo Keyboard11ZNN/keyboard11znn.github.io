@@ -15,6 +15,12 @@ Welcome to Keyboard11 z n. n. website!
 about usage of a documentation writing tool to write, effectively,
 something more reminiscent of a blog.)
 
+.. rubric:: Recently modified
+
+.. k11specialrecentlymodified:: 5
+
+   */*
+
 .. toctree::
    :maxdepth: 1
    :caption: Contents:
@@ -24,7 +30,7 @@ something more reminiscent of a blog.)
    whinecellar
    ideabox
 
-Other stuff:
+.. rubric:: Meta-ish stuff:
 
 .. "modindex" seems to be only for Python, so we're turning it off for now.
    * :ref:`modindex`
