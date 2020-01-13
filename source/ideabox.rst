@@ -20,7 +20,6 @@ Feel free to discuss them, implement them, or tell me they suck.
 .. toctree::
    :titlesonly:
    :caption: What's in the Ideabox as of today?
-   :reversed:
    :glob:
 
    ideabox/*

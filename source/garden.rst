@@ -22,6 +22,8 @@ That's what I call a win-win.
 .. toctree::
    :titlesonly:
    :glob:
-   :caption: Current inhabitants of the Garden include
+   :caption: Current inhabitants of the Garden include:
 
    garden/*
+
+Watch out for the unscheduled future arrivals!

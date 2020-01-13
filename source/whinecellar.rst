@@ -20,7 +20,6 @@ But hey, you know what they say about the cheap whine.
 .. toctree::
    :titlesonly:
    :caption: What's in the Whine Cellar as of today?
-   :reversed:
    :glob:
 
    whinecellar/*
