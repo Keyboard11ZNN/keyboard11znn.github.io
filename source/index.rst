@@ -30,11 +30,11 @@ something more reminiscent of a blog.)
    whinecellar
    ideabox
 
-.. rubric:: Meta-ish stuff:
+.. .. .. rubric:: Meta-ish stuff:
 
-.. "modindex" seems to be only for Python, so we're turning it off for now.
+.. .. "modindex" seems to be only for Python, so we're turning it off for now.
    * :ref:`modindex`
 
-* :ref:`genindex`
-* :ref:`search`
+.. .. * :ref:`genindex`
+.. .. * :ref:`search`
 
