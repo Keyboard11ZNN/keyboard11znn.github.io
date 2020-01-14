@@ -1,0 +1,10 @@
+{% extends "!layout.html" %}
+
+{% block linktags %}
+ {{ super() }}
+ <link rel="apple-touch-icon" sizes="180x180" href="{{ pathto("_static/apple-touch-icon.png", 1) }}"/>
+ <link rel="mask-icon" color="#225599" href="{{ pathto("_static/safari-pinned-tab.svg", 1) }}" />
+ <meta name="theme-color" content="#225599" />
+ <meta name="msapplication-TileColor" content="#225599"/>
+ <meta name="msapplication-TileImage" content="{{ pathto("_static/mstile-144x144.png", 1) }}"/>
+{% endblock %}
