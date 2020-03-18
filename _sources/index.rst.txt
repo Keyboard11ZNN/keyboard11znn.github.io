@@ -31,10 +31,10 @@ something more reminiscent of a blog.)
    whinecellar
    ideabox
 
-.. .. .. rubric:: Meta-ish stuff:
+.. rubric:: Meta-ish stuff:
 
-.. * :ref:`modindex`
-.. * :ref:`genindex`
-.. * :ref:`search`
+* :ref:`genindex`
+* :ref:`search`
 
+.. .. python modules used 'modindex' I think
 
