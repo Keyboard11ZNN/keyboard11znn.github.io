@@ -71,10 +71,10 @@ html_logo = '_static/keyboard11banner.svg'
 html_favicon = '_static/favicon.ico'
 # the default title is kind of redundant though
 html_title = 'KEYBOARD11 z n. n.'
-# search appears to be broken
-html_sidebars = {
-    '**': ['localtoc.html', 'relations.html', 'globaltoc.html']
-}
+## when search appeared to be broken
+#html_sidebars = {
+#    '**': ['localtoc.html', 'relations.html', 'globaltoc.html']
+#}
 
 # this is kinda unlikely, but still
 htmlhelp_basename = 'kbrd11'
