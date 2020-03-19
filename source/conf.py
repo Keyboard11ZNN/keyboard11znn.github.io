@@ -78,5 +78,6 @@ html_title = 'KEYBOARD11 z n. n.'
 
 # this is kinda unlikely, but still
 htmlhelp_basename = 'kbrd11'
-
+qthelp_basename = 'kbrd11'
+qthelp_theme = 'classic'
 
