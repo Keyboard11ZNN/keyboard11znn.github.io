@@ -1,0 +1,177 @@
+======================
+Stan whines about Rust
+======================
+
+.. contents
+
+It's not something I've spent a lot of letters talking about,
+but when it comes to programming languages, I have a clear
+favorite in C++. But I don't think it's perfect, and I may
+eventually publish a language of mine that will show some potential
+improvement areas. This may seem like a similarly crazy task
+as making a competitor to Git from scratch instead of supporting
+one of existing alternatives, but guess what: the alternatives
+aren't exactly a net improvement.
+
+There are two programming languages that are trying to position
+themselves as potential C++ replacements that I know of, Go and Rust.
+Go features mandatory garbage collection, which... you know, at that
+point you're not that far a way from Microsoft's .NET CLI setup,
+that's nowhere near C++. With Rust, well. It's definitely more honest.
+But it feels... thorny. It's a Giant, Friendly Yet Clumsy Crab of C++-like
+programming languages. I'm not going to pretend I'm a Rust expert;
+this post is a rant written mostly after reminding myself Rust exists
+and reading through "The Book" on rustlang.org once afterwards.
+It's likely that some points didn't come through to me, maybe they
+could be clarified.
+
+
+The Friendly
+============
+
+Let's start by talking about Rust features which I like, and which
+I'm definitely considering to include in my language. Many of these
+are simply similar to C++ decisions, this includes a static typing
+system, equivalents of RAII, presence of object movement... However, it
+wouldn't be fair to assume that "fixing obvious C++ flaws" is where Rust's
+vision of improvement ends. The idea of compiler checking the lifetime
+of references seems somewhat obvious in retrospect, but that doesn't
+change usefulness of it. Sometimes it's interesting to see how some
+ideas at C++ Standardization Committee and in Rust are similar and wonder
+whether it's simply convergence, or was there an inspiration going one
+way or another, as visible with C++'s std::spans and Rust's slices as
+replacement for pointer arithmetic, or Herb Sutter's suggested try operator
+and Rust's question mark notation. The non-null notation is cool as well,
+though I wonder how well optimized it is - but that's a rant about
+the language, not the compiler.
+
+The Giant
+=========
+
+Some elements of Rust are what I would consider weird, in the sense
+that I'm not sure what were the authors thinking when they decided to make
+the language work like that, but I don't really dislike them as much
+as I am befuddled by the choices. Usage of postfix exclamation mark
+for demarking macros is one example; I have no idea why didn't they go
+with something else, but it's not ultimately a problem.
+
+A larger feature is lack of direct inheritance, with dataless interfaces
+becoming the virtual option vehicles, and in fact apparently vtable
+pointers being moved into "fat pointers" within references. I really
+don't know what to think about this. It seems like it would result
+in a huge thought paradigm changes and this wasn't particularly
+well explained in the book, aside from "Go also does this and massive OOP
+is bad". There's probably a point in suggesting use of interfaces instead of
+inheritance when separate interface facility is available, but this doesn't
+leave much space for framework objects; maybe they can work differently.
+
+The Clumsy
+==========
+
+There's a few details that I'm not a huge fan of, but which I find ultimately
+understandable. All aspects of the Cargo build system feel more like something
+made because all the other "cool" languages have their own build systems
+which work similarly.
+
+One thing that I want to focus on is lack of what I call "open typing".
+To the best of my knowledge no widely known statically typed language made
+it work yet, it's probably what one could call a "personal concept".
+I mention it since multiple impl blocks for structs are the first step
+towards that, and I was feeling a little teased about the possibility
+of doing the same thing with fields - but, it's not what I could really
+call a fault.
+
+The Crab
+========
+
+So I sounded pretty happy with Rust so far. What's the problem with it, then?
+
+Notation.
+
+Oh dear Lord, the notation.
+
+This is actually a bit of a multifaceted issue. Let me explain.
+
+Move by default
+---------------
+
+You know how people criticize C++ for deeply copying stuff all the time
+by default? Well, Java's take on it was to involve a garbage collector
+and require explicit cloning of the values half the time. Rust is aligned
+to my interests enough to not involve a garbage collector, but deep
+copying of things still requires clone annotations. Instead, values
+are now moved by default, and proceed to disappear. This is slightly
+less of an issue than it sounds like since Rust encourages you to use
+references a lot, but it's a huge gotcha, especially since it doesn't
+apply to some types while applying to others.
+
+But if you're using references for your function parameters:
+
+Reffed up
+---------
+
+You need an ampersand to convert an object to a reference.
+
+If you come to Rust without going through C++ it's possible that you are
+squinting right now. So let's move straight to the next point:
+
+A vocabulary problem
+--------------------
+
+The Rust terminology is in significant collision with C++ one.
+Given the amount of programming languages, that wasn't completely
+avoidable, but some of the choices are extremely confusing.
+The best example is aforementioned reference, which is more like
+a C++ pointer than like a C++ reference in many ways. The Rust team
+could have tried to find a less used word for such an important element
+of the language, like they did with traits - there is a thing called
+a trait in C++, but it's significantly harder to mix up with the Rust one
+than the reference. Imagine if it was called a concept or an interface.
+
+let mut revenge
+---------------
+
+Rust has decided to make its equivalent of const object less verbose.
+That's cool, given how cool const objects are in C++, and how Rust boosts
+their optimization potential by involving something similar to the C "restrict"
+business in its references. Unfortunately, the way they did it is simply
+taking the pain on all the non-const stuff by requiring a "mut" qualifier
+on it. Then, presumably due to the aforementioned "restrict" business,
+you have to reapply that keyword in parameter passes or it will go const
+again. Gently nudging me with a fork when I do a shadier thing instead of
+when I do a less shady thing still makes me angry about the fork, you know.
+
+Generics, traits, and betrayal
+------------------------------
+
+Rust has a thing called a "trait" which is somewhere between a Java interface
+and C++-Wait-For-It-Edition concepts. Rust also has a thing called a generic
+which is supposed to work mostly like a C++ template. Unfortunately, while
+C++ Standards Committee decided to, at the last minute, pull concepts out
+of C++-Eventually-2011 due to how they required every template user to keep
+updating the bureaucratic declarations of conformance with concepts, Rust
+authors decided they were mostly fine with it, and in fact they forced generic
+authors to force their users to do it. In this case, C++ took... a while
+to come up with a suitable replacement, but the new concepts, in spite of the
+obvious handicaps, are a drastic improvement.
+
+What is particularly hilarious is that Rust compiler comes with the ability
+of automatically making methods for some of the base traits, but you still
+have to tell it to do it in all cases.
+
+absenceOf::improvementOf<sigils>
+--------------------------------
+
+I have no idea how one must feel in order to copy the triangle brackets
+and the namespace operator, of all things, from C++. Why? Just... why?
+
+The Crab Flips Me On My Back
+============================
+
+At this point, Mozilla has an existing Rust codebase and I doubt they
+would be particularly receptive to suggestions of changing half of their
+language by one guy with no experience. Certain elements could probably
+be adapted out without much damage to existing code, but they like it as is.
+I guess if I get less lazy I'll roll out my own language over LLVM and we'll
+see how that goes. Maybe I'll even change my viewpoint on some of these.
+
