@@ -1,0 +1,123 @@
+=====================
+Stan whines about Zig
+=====================
+
+.. contents
+
+While reading through recent release notes for LLVM suite, I spotted
+a mention of something called "the Zig programming language". Expecting
+something really stupid, I decided to take a ten minute gander. Little
+did I know that this will end up relevant to my previous rant about Rust.
+
+What followed was an emotional rollercoaster. First, there was the note
+of trying to become better than C (not C++, but closer to it than something
+like Kotlin or Dart that wouldn't even keep me reading). Then there were
+a few more irritating things, which complimented the initial tease without
+extinguishing it completely. This did not prepare me for what happened around
+the middle of the ziglang.org frontpage: a storm of features that I either
+found cool or even independently came up with before had me enter an uneven
+emotional state; I was wondering if that's what falling in love feels like...
+But not for long. Falling in love shouldn't expire in minutes.
+
+I compared Rust to a Giant Friendly Clumsy Crab. I'm not sure what to come
+up with that will describe CATS... I mean Zig... huh.
+
+How are you gentlemen!!
+=======================
+
+Zig has, no doubt by convergence of good design, some features that
+are absolutely reminiscent of what I was planning to do with my
+language already. A powerful example is that it leverages Clang to
+take a C header file and convert it to a native module, with little
+to no fiddling required to fix it. A lot of languages have C binding facilities,
+but it either comes with being mostly a superset of C and inheriting
+its header inclusion model, or requires manual work to present every entity
+that needs presentation to the language.
+
+Another cool element that I was actually going to attempt implementing myself
+is avoiding the Bracket Madness. As far as Zig is concerned, a class template
+is a function that returns a type, so it uses regular parentheses. This is
+what Zig calls a "comptime" function, which, to the best of my knowledge,
+is extremely close to C++2a's "consteval", but incorporates typing as well.
+This is brilliantly elegant.
+
+Apparently there's also some integrated build system - eh - which seems to
+implement some sort of compilation asset reuse that is more advanced than
+what C compilers do - huh? I'm not exactly sure of the details, but the
+basic idea sounds very much like what my Futomake was supposed to be about.
+
+All your base are belong to us.
+===============================
+
+Since headers are nonsensical anyway, let's get to my complaints.
+Some of them are of the... axiomatic nature. For instance, Zig has
+decided that anything that doesn't look like function call cannot generate
+a function call, which automatically eliminates a lot of cool features
+such as operator overloading and automatic destructors. Now, to be absolutely
+fair, the author (I think one by that point) made an exception of sort
+and allowed a flat RAII notation managed with separate keywords, so you can
+get your destructors, you just gotta ask for them every single time. I think
+that notation will be friendlier to C veterans who hate destructors and...
+erm... GC veterans who hate destructors. But, I'm discussing my viewpoint here.
+Destructors are cool. Operator overloads are cool. I can't exactly vouch for
+this aspect of the language.
+
+I am a bit more receptive to the error handling setup. It's basically taking
+pieces from both error codes and exceptions, though I can't help but wonder
+about the implementation, once again.
+
+You are on the way to destruction.
+==================================
+
+There's a lot to take in Zig, and it isn't a language that is particularly
+well separated from the implementation, by the way. It advertises such features
+as shipping with musl source on Linux. Which is, you know, very cool, but other
+language compilers could easily start doing this. Clang, start doing this,
+please?
+
+That's pretty clearly on the environment side. Extensive error checks are
+more arguable. But these are cool. What's not cool is a lot of excessive
+notation. Function template equivalents are functions with "comptime" type
+parameters, which you have to put in yourself like it would be a macro.
+Everything in standard library that allocates takes an allocator parameter,
+that you have to put in yourself. Value parameters... actually, I'm not too
+sure, I'll explain later. Combined with no operator overloading and automatic
+destructors, this doesn't sound too good.
+
+YOU HAVE NO CHANCE TO SURVIVE
+=============================
+
+The above verbosity is enough to make me fall out of my falling in love with
+Zig, but I could see working with it if it added other stuff I personally
+want in my language. This seems very unlikely to happen:
+
+- D implementation of properties and C++ operator overloading are explicitly
+  listed as going against Zig interpretation of control flow integrity.
+- Given the implentation of error enumerations, it seems very unlikely
+  that Zig authors would like to implement my ideas of open structures
+  and classes.
+- Zig comes with a "3-bit signed integer type" ready to go. This may seem
+  like a very weird complaint to have, but the kicker is that it's explicitly
+  not byte aligned, while bytes are, and there doesn't seem to be a way to
+  make them not.
+- Zig is actively moving away from sigils to keywords, and less actively
+  away from stropped keywords to regular keywords.
+
+make your time.
+===============
+
+The last point is what I would consider "very interesting". You see, Zig is not
+considering itself production ready yet, it's in version 0.5.0 right now and
+that comes with an explanation that 1.0.0 is what authors (many at that point,
+I suppose) will consider stable. This is rather obvious when reading description
+of language features. Compared to Rust situation, changes between today's
+and 2016's Zig are kind of huge. So maybe it's not really the time to judge it
+as a whole.
+
+The biggest problem that Zig presents to me is that I cannot really see getting
+many people to cooperate with my language if there's already a solid competition
+in what I consider a relatively small market. Oh well, we'll see if that's
+the case. Maybe I'll just give up as always and there will be no problem
+whatsoever.
+
+
