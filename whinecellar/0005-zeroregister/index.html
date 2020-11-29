@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stan whines about zero register (mostly in RISC-V) &#8212; KEYBOARD11 z n. n.</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <script src="../../_static/sidebar.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+ 
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Keyboard11 Ideabox" href="../../ideabox/" />
+    <link rel="prev" title="Stan whines about whining about whining" href="../0004-metawhine/" />
+ <link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+ <link rel="mask-icon" color="#225599" href="../../_static/safari-pinned-tab.svg" />
+ <meta name="theme-color" content="#225599" />
+ <meta name="msapplication-TileColor" content="#225599"/>
+ <meta name="msapplication-TileImage" content="../../_static/mstile-144x144.png"/>
+ 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex/" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../ideabox/" title="Keyboard11 Ideabox"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../0004-metawhine/" title="Stan whines about whining about whining"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../">KEYBOARD11 z n. n.</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../" accesskey="U">Whine Cellar</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Stan whines about zero register (mostly in RISC-V)</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="stan-whines-about-zero-register-mostly-in-risc-v">
+<h1>Stan whines about zero register (mostly in RISC-V)<a class="headerlink" href="#stan-whines-about-zero-register-mostly-in-risc-v" title="Permalink to this headline">¶</a></h1>
+<p>As if stuff written here wasn’t esoteric enough, this rant is about
+an amateur’s understanding of assembly programming. Viewer discretion
+is advised.</p>
+<div class="section" id="but-what-is-zero-register-or-the-strawman-maybe">
+<h2>But what is zero register? (or, the strawman, maybe)<a class="headerlink" href="#but-what-is-zero-register-or-the-strawman-maybe" title="Permalink to this headline">¶</a></h2>
+<p>The weird part of zero register talk is that CPU instruction sets
+with those tend to have some differences in what exactly a zero
+register is. So, AArch64 ISA (what a name, by the way) has some
+instructions having access to a zero while others use a similar
+encoding for stack pointer, while PowerPC has certain memory
+operations treating one of the registers as zero while others
+treat it as a regular register.</p>
+<p>This is confusing, but whoever came up with such schemes has clearly
+realized that. It’s not really different from having a weird encoding
+for operations involving zero, and an extra register that’s usable
+for some other things. Not the worst thing in the world, has advantages,
+has disadvantages.</p>
+<p>What is specifically befuddling to me is the real deal zero register.
+Here’s how I define that one:</p>
+<ul class="simple">
+<li><p>It’s an entry in general registers bank present in all instructions.</p></li>
+<li><p>It can be “written to”, and the results are ignored.</p></li>
+<li><p>And of course, it always reads as zero.</p></li>
+</ul>
+<p>This seems to be, at a glance, what RISC-V and MIPS instruction sets use.</p>
+</div>
+<div class="section" id="zero-register-advocacy">
+<h2>Zero register advocacy<a class="headerlink" href="#zero-register-advocacy" title="Permalink to this headline">¶</a></h2>
+<p>There is one (1) advantage of a zero register presence that I am aware of,
+namely that it allows the CPU designers to remove certain operations in favor
+of more complex operations that are already implemented anyway doing their
+job. A standard example is replacing a register-to-register move by an
+addition involving a zero, assuming you have a separate destination operand.</p>
+</div>
+<div class="section" id="strawland">
+<h2>Strawland<a class="headerlink" href="#strawland" title="Permalink to this headline">¶</a></h2>
+<p>To be completely fair to zero register, it makes sense if you are making
+a really, really tiny processor, that lacks all sort of instruction
+transformation madness that most processors a typical coder recognizes
+as such have deployed.
+So, to reiterate, it’s an okay design trick if you’re trying to fit
+a 32-bit CPU into least transistors possible or something. In that sense,
+it’s a bit like a branch delay slot.</p>
+<p>Both RISC-V and MIPS claim they are not exclusively
+targeting such environments. Well, MIPS is mostly historical now, but some
+people are trying to push RISC-V as the challenger to ARM of all things.
+So, if you have aspirations for your core to be performant,
+I should present the case that a zero register is a waste of opcode space,
+and RISC-V is just full of examples why.</p>
+</div>
+<div class="section" id="stan-s-arguments-against-zero-register">
+<h2>Stan’s arguments against zero register<a class="headerlink" href="#stan-s-arguments-against-zero-register" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="immediates">
+<h3>Immediates<a class="headerlink" href="#immediates" title="Permalink to this headline">¶</a></h3>
+<p>Do you have variation opcodes with constant arguments? Do these arguments
+include zero? If they do, that’s a natural way of encoding operations
+involving a zero argument, if you absolutely have to.</p>
+<p>RISC-V has immediate encoding for most of its baseline instructions, by the way,
+and recommended way to encode a register-register move is with one of those.
+But it still has a zero register.</p>
+</div>
+<div class="section" id="discarded-data-operation-results">
+<h3>Discarded data operation results<a class="headerlink" href="#discarded-data-operation-results" title="Permalink to this headline">¶</a></h3>
+<p>There are two ways this can go.</p>
+<ul class="simple">
+<li><p>Your CPU has a flags register that your instruction updates. You save
+yourself from having an equivalent compare opcode, sure. I don’t think
+that’s a lot, but it’s something.</p></li>
+<li><p>Or, your instruction doesn’t affect the flags register. Maybe your CPU
+doesn’t even have a flags register. In which case, you can now encode a NOP
+with every instruction that normally writes to GPR. Go you.</p></li>
+</ul>
+<p>It may interest you that RISC-V doesn’t have a flags register. It uses
+compare-and-branch instructions instead, where zero register is somewhat
+useful as an argument.</p>
+<p>A special case is when you discard a load operation result. Which is…
+a rather esoteric thing, unless you’re doing complex decoding and interpreting
+it as a prefetch, I guess?</p>
+</div>
+<div class="section" id="the-power-of-zero-in-core-data-operations">
+<h3>The power of zero in core data operations<a class="headerlink" href="#the-power-of-zero-in-core-data-operations" title="Permalink to this headline">¶</a></h3>
+<p>Here’s a table that I believe makes my statement pretty clear. It doesn’t
+get into details and a lot of operations have variations that aren’t elaborated
+upon here, but that, in my opinion, would just strengthen my case that the zero
+value is actually not that useful. I’ve included some further stuff involving
+parameter symmetry to showcase how it could be abused to encode more ops in less bits.
+(There’s no 0 &#64; 0 consideration since it’s rather obvious except for division.)</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 13%" />
+<col style="width: 22%" />
+<col style="width: 19%" />
+<col style="width: 30%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Operation</p></td>
+<td><p>Symmetrical?</p></td>
+<td><p>A &#64; 0</p></td>
+<td><p>0 &#64; A</p></td>
+<td><p>A &#64; A</p></td>
+</tr>
+<tr class="row-even"><td><p>Addition</p></td>
+<td><p>yes</p></td>
+<td><p>copy</p></td>
+<td><p>copy</p></td>
+<td><p>potentially useful (A &lt;&lt; 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Subtraction</p></td>
+<td><p>no</p></td>
+<td><p>copy</p></td>
+<td><p>useful (negation)</p></td>
+<td><p>zero</p></td>
+</tr>
+<tr class="row-even"><td><p>Multiplication</p></td>
+<td><p>yes</p></td>
+<td><p>zero</p></td>
+<td><p>zero</p></td>
+<td><p>useful</p></td>
+</tr>
+<tr class="row-odd"><td><p>Division</p></td>
+<td><p>no</p></td>
+<td><p>NaN or runtime error</p></td>
+<td><p>zero</p></td>
+<td><p>one</p></td>
+</tr>
+<tr class="row-even"><td><p>Bit OR</p></td>
+<td><p>yes</p></td>
+<td><p>copy</p></td>
+<td><p>copy</p></td>
+<td><p>copy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bit AND</p></td>
+<td><p>yes</p></td>
+<td><p>zero</p></td>
+<td><p>zero</p></td>
+<td><p>copy</p></td>
+</tr>
+<tr class="row-even"><td><p>Bit NAND</p></td>
+<td><p>no</p></td>
+<td><p>copy</p></td>
+<td><p>zero</p></td>
+<td><p>zero</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bit XOR/EOR</p></td>
+<td><p>yes</p></td>
+<td><p>copy</p></td>
+<td><p>copy</p></td>
+<td><p>zero</p></td>
+</tr>
+<tr class="row-even"><td><p>Bitshifts</p></td>
+<td><p>no</p></td>
+<td><p>copy</p></td>
+<td><p>zero</p></td>
+<td><p>something unusual</p></td>
+</tr>
+</tbody>
+</table>
+<p>So for the purpose of those core data manipulation operations,
+operations involving zero register have, like, three types
+of useful results total. And if you have three-argument operands
+everywhere, then copying and zeroing are already possible to handle
+with bit functions. Zero turns out to be most useful in case of
+being the first argument of subtraction, which is usually comparable
+to the compare-and-branch case discussed earlier.</p>
+<p>To be fair, it’s entirely possible that your simple CPU implements some more complex
+operations. For instance, you could compute a shift as a combined shift-add with a zero add.
+(Same about adding, but that usually has an immediate mode for shift amount.)
+This is not the case with RISC-V. It has separate shift and add instructions.</p>
+</div>
+<div class="section" id="adressing-a-la-mode">
+<h3>Adressing a’la mode<a class="headerlink" href="#adressing-a-la-mode" title="Permalink to this headline">¶</a></h3>
+<p>Here’s where I think the zero register really comes from, although it’s all speculation.</p>
+<ol class="arabic simple">
+<li><p>Someone comes up with the RISC philosophy of having simple instructions
+instead of complex ones.</p></li>
+<li><p>This turns out to be somewhat successful for data processing operations,
+but in comparison to established CISC processors, loads and stores are
+problematically slow.</p></li>
+<li><p>Load and store operations also happen to have two register arguments.
+Most RISC operations have three.</p></li>
+<li><p>It turns out that performance improves if you can do more complex stuff with
+registers to compute addresses, but that makes the whole RISC setup sound pick
+and choosey.</p></li>
+<li><p>Someone decides that having a mode involving (possibly scaled) register sum
+and a zero register is a decent compromise, and tries to justify it after the fact.</p></li>
+</ol>
+<p>This is based upon the whole PowerPC thing where zero register is normal sometimes.</p>
+<p>RISC-V doesn’t do this, to my knowledge. It has a single mode, but one
+with immediate offsets. The zero register can instead be used as a base for such an
+immediate offset, which is useful, unless your system uses address space layout
+randomization and doesn’t want you to have any hardcoded addresses. Most operating systems
+want ASLR nowadays, though you can disable it if you’re feeling like voiding warranties.
+Microcontrollers that don’t run operating systems are a bit more likely to make use of it.</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>The RISC-V implementation of zero register turns out to be useless for vast majority
+of its data manipulation opcodes. The load/store usage of such seems to be limited
+to microcontroller context where “zero page” is not affected by ASLR. The major
+exceptions in the set of expectedly common instructions are some uses with subtraction
+and the compare-and-branch opcode, which could probably be handled well in other ways.</p>
+<p>Zero register in general may not be particularly hard to include in a processor,
+but the rewards are pretty close to zero unless you’re really thin on decode space.
+Even then, there are alternative tricks that you can use and keep that register
+number for actual variables. Try it, please.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../">
+              <img class="logo" src="../../_static/keyboard11banner.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Stan whines about zero register (mostly in RISC-V)</a><ul>
+<li><a class="reference internal" href="#but-what-is-zero-register-or-the-strawman-maybe">But what is zero register? (or, the strawman, maybe)</a></li>
+<li><a class="reference internal" href="#zero-register-advocacy">Zero register advocacy</a></li>
+<li><a class="reference internal" href="#strawland">Strawland</a></li>
+<li><a class="reference internal" href="#stan-s-arguments-against-zero-register">Stan’s arguments against zero register</a><ul>
+<li><a class="reference internal" href="#immediates">Immediates</a></li>
+<li><a class="reference internal" href="#discarded-data-operation-results">Discarded data operation results</a></li>
+<li><a class="reference internal" href="#the-power-of-zero-in-core-data-operations">The power of zero in core data operations</a></li>
+<li><a class="reference internal" href="#adressing-a-la-mode">Adressing a’la mode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../0004-metawhine/"
+                        title="previous chapter">Stan whines about whining about whining</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../ideabox/"
+                        title="next chapter">Keyboard11 Ideabox</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex/" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../ideabox/" title="Keyboard11 Ideabox"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../0004-metawhine/" title="Stan whines about whining about whining"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../">KEYBOARD11 z n. n.</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../" >Whine Cellar</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Stan whines about zero register (mostly in RISC-V)</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020+, stan423321.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>
