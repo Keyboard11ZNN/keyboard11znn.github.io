@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Things that can be done with an NES mapper &#8212; KEYBOARD11 z n. n.</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    
+    <script src="../../_static/sidebar.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+ 
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="prev" title="A calling convention concept for functions with C++-like exception model" href="../0003-exceptions/" />
+ <link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+ <link rel="mask-icon" color="#225599" href="../../_static/safari-pinned-tab.svg" />
+ <meta name="theme-color" content="#225599" />
+ <meta name="msapplication-TileColor" content="#225599"/>
+ <meta name="msapplication-TileImage" content="../../_static/mstile-144x144.png"/>
+ 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex/" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../0003-exceptions/" title="A calling convention concept for functions with C++-like exception model"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../">KEYBOARD11 z n. n.</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../" accesskey="U">Keyboard11 Ideabox</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Things that can be done with an NES mapper</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="things-that-can-be-done-with-an-nes-mapper">
+<h1>Things that can be done with an NES mapper<a class="headerlink" href="#things-that-can-be-done-with-an-nes-mapper" title="Permalink to this headline">¶</a></h1>
+<p>The Nintendo Entertainment System, its Japanese predecessor Famicom,
+and a bunch of clones of these video game machines have a cartridge
+setup featuring two completely separate adressed data buses. This
+design is found quite often in arcade machine cartridges, but not
+so much in home hardware (excluding Neo Geo if you count it). It is
+unclear whether this was simply meant to skip copying data to RAM
+connected to the secondary bus, as was the case in arcade machines,
+or were the designers already envisioning what actually happened:
+game developers started putting some pretty crazy circuitry inside
+the carts. While other systems had cartridges with enhancement chips,
+on the NES a comparatively big portion of the library has something
+more complicated than a simple bank mapper, even if it’s a simple
+IRQ generator. Regardless, the name “mapper” stuck.</p>
+<p>The point of this page is to explore what could be done with this
+system. I probably won’t be able to make my own overpowered cartridge,
+but I’ve spent way too much time at night thinking about the possiblities
+to do nothing with them.</p>
+<div class="section" id="context-basics">
+<h2>Context (basics)<a class="headerlink" href="#context-basics" title="Permalink to this headline">¶</a></h2>
+<p>The NES has two “big” buses connected to the cartridge. The CPU
+bus has 16 address wires and 8 data wires, except the top address
+wire is weird, but it can be worked around if necessary. Additionally,
+there’s a read-or-write wire. The PPU (graphics chip) bus has 14 address
+wires, 8 data wires and the direction wire, plus extra two wires that
+allow you to activate one of two on-board PPU RAM slots which are kilobyte
+long.</p>
+<p>There are some differences between systems. Famicoms and derived clones
+include two wires that allow you to mix in some sound (although reliability
+of this approach on clones is expectedly iffy).
+NES replaced those with some DRM chip wires and ten “extension” wires,
+which in early systems connected to an extension slot, but no official
+hardware for that thing ended up being released. It appears that the NES
+was designed during the short time Nintendo thought they could transition
+Famicom software to FDS format, which didn’t end up happening, and thus
+international audio circuitry was moved to slot that was abandoned.</p>
+<p>Most home cartridge systems ended up with some sort of address mapping
+circuitry on cartridges, but the PPU bus being connected to the cartridge
+presented some unique possibilities.</p>
+</div>
+<div class="section" id="historical-use-of-ppu-bus">
+<h2>Historical use of PPU bus<a class="headerlink" href="#historical-use-of-ppu-bus" title="Permalink to this headline">¶</a></h2>
+<p>Before the circuitry madness started, there were, generally speaking,
+two standard ways to design NES cartridges. Either you connected
+extra RAM for texture access to the system and treated the whole thing
+like any other cartridge console at the time, or you plugged in a separate
+chip with patterns burnt in and didn’t touch them; in either case, you then
+plugged on-board RAM into where PPU wanted tilemaps. The latter point
+was rarely touched upon, for one reason or another.</p>
+<p>The major step forward was putting a slot mapper on PPU side (controlled
+by CPU regardless). This allowed modifying the pattern availability to PPU
+really fast. (Note that NES had a DMA, but only for sprite definiition table.)
+In combination with either carefully written code or an IRQ generator on
+CPU side, it was, in fact, possible to switch the banks mid-frame. Fun fact about
+IRQ generators: the PPU bus access allowed realively easy scanline counting.</p>
+<p>Because PPU accessed the memory in a very predictable pattern, a few games
+went a bit further. A relatively simple trick involved pattern which switched
+the bank mapping when accessed, eliminating the IRQ overhead for predictable
+cases. However, further trickery was developed, such as shadow tilemaps
+with bank information and in case of one chip from Nintendo, higher precision
+background color information. (The PPU used 8x8 background tiles, but palettes
+for tiles were selected in 16x16 tile clusters, and they were easier to manipulate
+in 32x32 clusters; however, it then proceeded to re-read those for each and every
+tile, which I can’t decide what to think of). Distinguishing whether patterns were
+requested for background or sprites by timing measurement was also implemented.</p>
+</div>
+<div class="section" id="things-that-can-be-done-with-ppu-bus">
+<h2>Things that can be done with PPU bus<a class="headerlink" href="#things-that-can-be-done-with-ppu-bus" title="Permalink to this headline">¶</a></h2>
+<p>Well, you can just send arbitrary 256x240 2bpp bitmaps onto the screen directly
+from the cartridge, if you want to, and throw in a Core i7 for game logic, but…
+you know. Overkill.</p>
+</div>
+<div class="section" id="things-that-could-have-been-done-with-ppu-bus">
+<h2>Things that could have been done with PPU bus<a class="headerlink" href="#things-that-could-have-been-done-with-ppu-bus" title="Permalink to this headline">¶</a></h2>
+<p>If your point would be to make something that could realistically be done in the
+eighties, relax, because there are a lot of possibilities that weren’t touched
+yet remain completely viable.</p>
+<ul class="simple">
+<li><p>The column offset mode available on SNES and Mega Drive is backportable
+without any particular issue, and in fact with a possibility of removing
+the border column problems present in those. Further trickery is possible by
+changing those offsets mid-frame, which could maybe be automated.</p></li>
+<li><p>Background tiles can be given arbitrary vertical size and multiplied
+horizontal size.</p></li>
+<li><p>Palette indices can be given to individual rows of patterns. This would
+be easier to use by the game code as per-tile description rather than
+secondary palette background map getting more detailed than regular
+tilemap itself, I think?</p></li>
+<li><p>A secondary background pattern can be injected into empty background
+data. This is not a full secondary background, but it would have its uses.
+Think of it as tile animation parallax trick taken up to eleven. You could
+maaaaaybe add more sprites this way, but that stretches even my believability.</p></li>
+<li><p>The background maps themselves could be given less annoying dimensions.</p></li>
+</ul>
+</div>
+<div class="section" id="the-nes-specific-cpu-bus-tricks">
+<h2>The NES specific CPU bus tricks<a class="headerlink" href="#the-nes-specific-cpu-bus-tricks" title="Permalink to this headline">¶</a></h2>
+<p>The regular math acceleration tricks, bank mapping and auto-increment registers
+are there. Unfortunately opcode injection doesn’t seem particularly viable.
+There are a few ingenious uses of the standards in connection to audio subsystem
+(although on Japanese systems you can just mix in your stuff),
+but the PPU connection remains the source of most possible hackery.</p>
+<ul class="simple">
+<li><p>You can DMA or maybe even bank swap pattern and background definition data without
+involvement of system hardware. Note that this can’t be done with sprite definitions
+or palettes, even though the latter hypothetically lay in PPU bus space.</p></li>
+<li><p>Text blitter! That is more due to the pattern format being complex, but it’s a possibility.
+You could also blit other stuff, I guess.</p></li>
+<li><p>Sprite definitions transform, linked with bank mapping to achieve arbitrary
+sprite banking.</p></li>
+</ul>
+</div>
+<div class="section" id="the-most-general-trick">
+<h2>The most general trick<a class="headerlink" href="#the-most-general-trick" title="Permalink to this headline">¶</a></h2>
+<p>While in the eighties, CPU bus and PPU bus chips were separate, you may consider actually
+merging them and demultiplexing if your current circuitry is fast enough as a cost saving
+measure. Instant bus shift is just a bonus.</p>
+</div>
+<div class="section" id="extra-notes-on-neo-geo">
+<h2>Extra notes on Neo Geo<a class="headerlink" href="#extra-notes-on-neo-geo" title="Permalink to this headline">¶</a></h2>
+<p>Very few of the ideas here seem applicable to Neo Geo. You may wonder why. Well, basically,
+Neo Geo has a dedicated foreground tilemap that doesn’t really link to the cartridge at all,
+and everything else is done with sprites. This means there’s little to do with background
+definitions, although you could still implement a sprite definition transform connected to
+bank mapping or pipe data to audio bus.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../">
+              <img class="logo" src="../../_static/keyboard11banner.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Things that can be done with an NES mapper</a><ul>
+<li><a class="reference internal" href="#context-basics">Context (basics)</a></li>
+<li><a class="reference internal" href="#historical-use-of-ppu-bus">Historical use of PPU bus</a></li>
+<li><a class="reference internal" href="#things-that-can-be-done-with-ppu-bus">Things that can be done with PPU bus</a></li>
+<li><a class="reference internal" href="#things-that-could-have-been-done-with-ppu-bus">Things that could have been done with PPU bus</a></li>
+<li><a class="reference internal" href="#the-nes-specific-cpu-bus-tricks">The NES specific CPU bus tricks</a></li>
+<li><a class="reference internal" href="#the-most-general-trick">The most general trick</a></li>
+<li><a class="reference internal" href="#extra-notes-on-neo-geo">Extra notes on Neo Geo</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../0003-exceptions/"
+                        title="previous chapter">A calling convention concept for functions with C++-like exception model</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex/" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../0003-exceptions/" title="A calling convention concept for functions with C++-like exception model"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../">KEYBOARD11 z n. n.</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../" >Keyboard11 Ideabox</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Things that can be done with an NES mapper</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020+, stan423321.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+  </body>
+</html>
