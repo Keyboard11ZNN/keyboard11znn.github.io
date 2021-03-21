@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.abspath('./_ext'))
 # -- Project information -----------------------------------------------------
 
 project = 'Keyboard11 z n. n. website'
-copyright = '2020+, stan423321'
+copyright = '2020-2021+, stan423321'
 author = 'stan423321'
 
 # The full version, including alpha/beta/rc tags
