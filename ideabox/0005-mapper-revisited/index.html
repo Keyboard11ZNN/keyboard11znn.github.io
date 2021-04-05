@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick and dirty indented language lossless alpha-conversion &mdash; KEYBOARD11 z n. n.</title>
+  <title>Things that can be done with an NES mapper, revisited &mdash; KEYBOARD11 z n. n.</title>
   
 
   
@@ -37,8 +37,7 @@
  
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="How to accelerate C++ compilation without killing preprocessing" href="../0001-futomake/" />
-    <link rel="prev" title="Keyboard11 Ideabox" href="../" />
+    <link rel="prev" title="Things that can be done with an NES mapper" href="../0004-mapper/" />
  <link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
  <link rel="mask-icon" color="#225599" href="../../_static/safari-pinned-tab.svg" />
  <meta name="theme-color" content="#225599" />
@@ -95,12 +94,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../garden/">Garden of Code Monstrosities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../whinecellar/">Whine Cellar</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">Keyboard11 Ideabox</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Quick and dirty indented language lossless alpha-conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../0000-qadillac/">Quick and dirty indented language lossless alpha-conversion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../0001-futomake/">How to accelerate C++ compilation without killing preprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../0002-paraconsole/">The inadequacy of linear terminal for age of concurrency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../0003-exceptions/">A calling convention concept for functions with C++-like exception model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../0004-mapper/">Things that can be done with an NES mapper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../0005-mapper-revisited/">Things that can be done with an NES mapper, revisited</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Things that can be done with an NES mapper, revisited</a></li>
 </ul>
 </li>
 </ul>
@@ -150,7 +149,7 @@
         
           <li><a href="../">Keyboard11 Ideabox</a> &raquo;</li>
         
-      <li>Quick and dirty indented language lossless alpha-conversion</li>
+      <li>Things that can be done with an NES mapper, revisited</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -164,10 +163,8 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="../0001-futomake/" class="btn btn-neutral float-right" title="How to accelerate C++ compilation without killing preprocessing" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="../" class="btn btn-neutral float-left" title="Keyboard11 Ideabox" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../0004-mapper/" class="btn btn-neutral float-left" title="Things that can be done with an NES mapper" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -176,61 +173,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quick-and-dirty-indented-language-lossless-alpha-conversion">
-<h1>Quick and dirty indented language lossless alpha-conversion<a class="headerlink" href="#quick-and-dirty-indented-language-lossless-alpha-conversion" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
-<p>The source specification of computer programs and other things
-is, for historical reasons, typically composed of text files.
-However, in accordance with modern understanding of code being tidy,
-those text files tend to follow multiple rigid structures, which
-lowers their information density when compared to storage length. One such
-structure is indentation.</p>
-<p>Indentation is very useful for viewer of the code, but it comes with
-a lot of drawbacks when one considers its direct storage in text files.
-The most basic one is that, naturally, it wastes space. This can be partially
-mitagated with compression algorithms, but if it wasn’t the case those
-could do a better job on the rest of the code.</p>
+  <div class="section" id="things-that-can-be-done-with-an-nes-mapper-revisited">
+<h1>Things that can be done with an NES mapper, revisited<a class="headerlink" href="#things-that-can-be-done-with-an-nes-mapper-revisited" title="Permalink to this headline">¶</a></h1>
+<p>I’ve had some enlightening discussions about capabilities of NES
+on the NESDEV forums, which has been a cool stretch for my brain.
+I find it fitting to summarize resultant findings here, given my
+previous ramblings being published close enough.</p>
+<p>As always, if someone doesn’t care for making new circuits for
+old consoles, it’s their loss, I guess.</p>
+<div class="section" id="things-that-should-work-as-expected">
+<h2>Things that should work as expected<a class="headerlink" href="#things-that-should-work-as-expected" title="Permalink to this headline">¶</a></h2>
+<p>Bigger tile mode, column shifting, palette tile binding or tile row binding,
+those would work pretty much as expected.</p>
+<p>Background size adjustment would require a bit more of mess, but is doable.</p>
 </div>
-<div class="section" id="idea">
-<h2>Idea<a class="headerlink" href="#idea" title="Permalink to this headline">¶</a></h2>
-<p>A very simple encoding could be made which would allow lossless compression
-of a typical source code file, that would at the same time preserve most
-of its non-indentation properties so that dictionary algorithms could
-keep doing their jobs. Additionally, this could improve performance of some
-diff utilities.</p>
-<p>Amongst 128 standard US-ASCII characters, the first 32 are control codes.
-Out of these 32, maybe 5 are commonly seen within source code. The rest
-could be used to implement the indentation encoding, with one reserved
-to preserve their actual occurences if they happened to happen. In fact, this
-is such a huge collection of control codes that the indentation encoding
-would barely take half of them, and the occasionally used high bytes are
-completely absent from our discussion so far; further encoding improvements
-are certainly possible; this is an undercooked idea though, so we’re going
-to focus on indentation encoding.</p>
-<p>The indentation in most languages tends to follow a stack-like structure.
-A stack of indentation strings seems like a natural pick. It could be
-pushed at a start of indentation block, and popped at the end of one.</p>
-<p>Most programs tend to follow a simple scheme of indentation levels,
-each denoted with a tab character or a constant length space string.
-However, there are some exceptions in various styles, and some
-ocassional oddities which could use a more varied string, like
-blocks of C++ one-line comments. Encoding most used schemes with a single
-control code while allowing encoding new ones seems like a fine decision.</p>
-<p>There doesn’t seem to be a logical reason to allow manipulating
-the indentation stack in the middle of a line.</p>
-<p>C, C++ and similar languages could achieve further compression by combining
-pushing and popping from indentation stack with embedded parentheses, braces,
-and maybe brackets.</p>
-<p>Python and similar languages could achieve further compression by combining
-popping several layers from the stack in a lesser count of control codes.</p>
+<div class="section" id="muxing-the-bus">
+<h2>Muxing the bus<a class="headerlink" href="#muxing-the-bus" title="Permalink to this headline">¶</a></h2>
+<p>It turns out ROM and RAM chips of classic bus kind have actually
+kinda slowed down since SNES era, and the ones are close remain
+significantly more expensive (since everything moved to more involved
+buses). Combined with a variety of possible timing misalignmments,
+this makes a single bus design unviable, although some elements could be
+approximated; it would take relatively complex circuitry, though.</p>
 </div>
-<div class="section" id="problems">
-<h2>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
-<p>While this could be easily implemented as a compression layer in 7-zip style
-archive, implementation in version control systems is likely to be hard
-due to their embedded difference utilities not expecting the control codes,
-especially used in the way presented here.</p>
+<div class="section" id="secondary-background-generator-extensions">
+<h2>Secondary background generator extensions<a class="headerlink" href="#secondary-background-generator-extensions" title="Permalink to this headline">¶</a></h2>
+<p>A secondary background generator could be adjusted so that it could
+show secondary objects merely by tweaking the secondary background tiles a bit more.</p>
+</div>
+<div class="section" id="ease-of-access">
+<h2>Ease of access<a class="headerlink" href="#ease-of-access" title="Permalink to this headline">¶</a></h2>
+<p>A major point to consider is whether a particular design isn’t too much
+for the NES CPU to handle, unless you add on another CPU, which makes
+the considerations significantly less interesting. A nice way of doing
+that would be to summarize some of the various properties into overall
+indices which could be bound to tile numbers or a reduced count of secondary
+property numbers, or both which could be combined together.
+I do not have the optimal count of such.</p>
+</div>
+<div class="section" id="cpu-tweaks">
+<h2>CPU tweaks<a class="headerlink" href="#cpu-tweaks" title="Permalink to this headline">¶</a></h2>
+<p>While NES CPU lacks the wires which are present in some other members of
+6502 family and allow opcode substitution, a slightly dumber technique
+is available which also allows it, and so much more. Specifically, you need
+to assign more than eight bits of data for eight bits which CPU will read.
+I’m not sure about the exact perfect amount and haven’t ruled out it being fractional.
+The biggest source of acceleration would be injection of “immediates” from cartridge
+RAM into the opcode stream.
+This could just accelerate arithmetic on RAM values, but it would be most
+powerful when abused for address arithmetic.</p>
+<p>This trick is not specific to NES
+CPU, for the record, and could easily be applied on anything else which
+tends to execute code from ROM.</p>
 </div>
 </div>
 
@@ -242,10 +236,8 @@ especially used in the way presented here.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../0001-futomake/" class="btn btn-neutral float-right" title="How to accelerate C++ compilation without killing preprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="../" class="btn btn-neutral float-left" title="Keyboard11 Ideabox" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../0004-mapper/" class="btn btn-neutral float-left" title="Things that can be done with an NES mapper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
